@@ -1,5 +1,6 @@
 import pandas as pd
 import random
+import os
 import string
 from datetime import date
 from class_config_reader import ConfigReader
@@ -7,8 +8,8 @@ from class_config_reader import ConfigReader
 today_date = date.today()
 
 config = ConfigReader()
-
-df_price = pd.read_csv(config.price)
+dirname = os.path.dirname(__file__)
+df_price = pd.read_csv(os.path.join(dirname,config.price))
 df_price['price']  = df_price.apply(lambda x: float(x['price']), axis= 1)
 
 def create_reciept(sales):

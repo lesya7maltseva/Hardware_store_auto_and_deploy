@@ -1,5 +1,6 @@
 import psycopg2 
 import pandas as pd
+import os
 import csv
 from io import StringIO
 
@@ -18,9 +19,9 @@ class DatabaseConnection:
         )       
         
     #метод загрузки данных в БД
-    def load (self, filepath):
+    def load (self, filepath, dirname):
         cursor = self.connection.cursor()
-        df_loaded = pd.read_csv(filepath)
+        df_loaded = pd.read_csv(os.path.join(dirname,filepath))
 
         clipboard = StringIO()
         df_loaded.to_csv(clipboard, index= None, header= None) 
