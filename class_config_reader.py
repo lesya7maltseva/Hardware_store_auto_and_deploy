@@ -3,20 +3,20 @@ import os
 
 class ConfigReader:
     def __init__(self):
-        self._config = configparser.ConfigParser()
-        self._dirname = os.path.dirname(__file__)
-        self._config.read(os.path.join(self._dirname, 'self._config.ini'))
+        config = configparser.ConfigParser()
+        dirname = os.path.dirname(__file__)
+        config.read(os.path.join(dirname, 'config.ini'))
         #файлы
-        self._folder_path = self._config["Files"]["FOLDER_PATH"]
-        self._price = self._config["Files"]["PRICE_PATH"]
+        self._folder_path = config["Files"]["FOLDER_PATH"]
+        self._price = config["Files"]["PRICE_PATH"]
         #продажи        
-        self._reciepts = int(self._config["Sales_data"]["RECIEPTS"])
-        self._shops= self._config["Sales_data"]["SHOPS"]
+        self._reciepts = int(config["Sales_data"]["RECIEPTS"])
+        self._shops= config["Sales_data"]["SHOPS"]
         #БД
-        self._base = self._config["DATABASE"]["BASE"]
-        self._host = self._config["DATABASE"]["HOST"]
-        self._user = self._config["DATABASE"]["USER"]
-        self._password = self._config["DATABASE"]["PASSWORD"]
+        self._base = config["DATABASE"]["BASE"]
+        self._host = config["DATABASE"]["HOST"]
+        self._user = config["DATABASE"]["USER"]
+        self._password = config["DATABASE"]["PASSWORD"]
     
     @property
     def folder_path(self):

@@ -6,7 +6,7 @@ from class_config_reader import ConfigReader
 
 today_date = date.today()
 config = ConfigReader()
-
+dirname = os.path.dirname(__file__)
 if today_date.weekday() < 6:
   #проверяем наличие папки - создаем если её нет или удаляем всё содержимое, если она есть
   try:
