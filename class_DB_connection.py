@@ -1,6 +1,5 @@
 import psycopg2 
 import pandas as pd
-import os
 import csv
 from io import StringIO
 
@@ -24,10 +23,10 @@ class DatabaseConnection:
         df_loaded = pd.read_csv(filepath, sep=',')
 
         clipboard = StringIO()
-        df_loaded.to_csv(clipboard, index= None, header= None) 
+        df_loaded.to_csv(clipboard, index= None, header= None, encoding= 'utf-8') 
 
-        writer = csv.writer(clipboard, quoting=csv.QUOTE_ALL)
-        writer.writerows(df_loaded.values)
+        #writer = csv.writer(clipboard, quoting=csv.QUOTE_ALL)
+        #writer.writerows(df_loaded.values)
         clipboard.seek(0)
 
         with cursor as sc:
