@@ -5,7 +5,7 @@ class ConfigReader:
     def __init__(self):
         config = configparser.ConfigParser()
         dirname = os.path.dirname(__file__)
-        config.read(os.path.join(dirname, 'config.ini'))
+        config.read(os.path.join(dirname, "config.ini"))
         #файлы
         self._folder_path = config["Files"]["FOLDER_PATH"]
         self._price = config["Files"]["PRICE_PATH"]
