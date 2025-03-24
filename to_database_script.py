@@ -6,7 +6,6 @@ from class_config_reader import ConfigReader
 
 today_date = date.today()
 config = ConfigReader()
-dirname = os.path.dirname(__file__)
 
 if 0 <= today_date.weekday() <= 6:
     db_connection = DatabaseConnection(config.base, config.host, config.user, config.password)

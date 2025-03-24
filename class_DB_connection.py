@@ -21,12 +21,12 @@ class DatabaseConnection:
     #метод загрузки данных в БД
     def load (self, filepath):
         cursor = self.connection.cursor()
-        df_loaded = pd.read_csv(filepath)
+        df_loaded = pd.read_csv(filepath, sep=',')
 
         clipboard = StringIO()
         df_loaded.to_csv(clipboard, index= None, header= None) 
 
-        writer = csv.writer(clipboard)
+        writer = csv.writer(clipboard, quoting=csv.QUOTE_ALL)
         writer.writerows(df_loaded.values)
         clipboard.seek(0)
 
