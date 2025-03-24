@@ -28,5 +28,5 @@ if 0 <= today_date.weekday() <= 6:
 
     for file in lst_files:
         if re.match(regexp, file):
-            db_connection.load(config.folder_path/file)
+            db_connection.load(config.folder_path + '/' + file)
 
