@@ -19,9 +19,9 @@ class DatabaseConnection:
         )       
         
     #метод загрузки данных в БД
-    def load (self, filepath, dirname):
+    def load (self, filepath):
         cursor = self.connection.cursor()
-        df_loaded = pd.read_csv(os.path.join(dirname,filepath))
+        df_loaded = pd.read_csv(filepath)
 
         clipboard = StringIO()
         df_loaded.to_csv(clipboard, index= None, header= None) 

@@ -21,7 +21,7 @@ if 0 <= today_date.weekday() <= 6:
             shop_name = input("Введите название магазина: ")
             shop_city = input("Введите город, где находится магазин: ")
             shop_street = input("Введите улицу, где находится магазин: ")
-            db_connection.update_shops(shop_name,shop_city,shop_street )
+            db_connection.update_shops(shop_name,shop_city,shop_street)
             i += 1
 
     lst_files = os.listdir(config.folder_path)
@@ -29,5 +29,5 @@ if 0 <= today_date.weekday() <= 6:
 
     for file in lst_files:
         if re.match(regexp, file):
-            db_connection.load(f'{config.folder_path}/{file}', dirname)
+            db_connection.load(f'{config.folder_path}/{file}')
 
