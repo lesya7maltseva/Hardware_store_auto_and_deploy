@@ -6,7 +6,7 @@ from class_config_reader import ConfigReader
 
 today_date = date.today()
 config = ConfigReader()
-
+dirname = os.path.dirname(__file__)
 if 0 <= today_date.weekday() < 6:
 
     db_connection = DatabaseConnection(config.base, config.host, config.user, config.password)
@@ -24,10 +24,10 @@ if 0 <= today_date.weekday() < 6:
             db_connection.update_shops(shop_name,shop_city,shop_street)
             i += 1
 
-    lst_files = os.listdir(config.folder_path)
+    lst_files = os.listdir(os.path.join(dirname,config.folder_path))
     regexp = r'\d+_\d+\s\d{4}-\d{2}-\d{2}.csv'
 
     for file in lst_files:
         if re.match(regexp, file):
-            db_connection.load(config.folder_path + '/' + file)
+            db_connection.load(os.path.join(dirname,config.folder_path,file))
 
