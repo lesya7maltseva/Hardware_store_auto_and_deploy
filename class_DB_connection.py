@@ -1,6 +1,5 @@
 import psycopg2 
 import pandas as pd
-import csv
 from io import StringIO
 
 class DatabaseConnection:
