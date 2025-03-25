@@ -9,7 +9,7 @@ today_date = date.today()
 
 config = ConfigReader()
 dirname = os.path.dirname(__file__)
-df_price = pd.read_csv(config.price)
+df_price = pd.read_csv(os.path.join(dirname,config.price))
 df_price['price']  = df_price.apply(lambda x: float(x['price']), axis= 1)
 
 def create_reciept(sales):
