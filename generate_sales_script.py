@@ -27,6 +27,6 @@ if today_date.weekday() < 6:
       df_shop = Sales(config.reciepts)
       df_shop.generate_sales()
       df_shop.new_column(shop_id = key, till_id = i)
-      df_shop.get_shops_price().to_csv(config.folder_path + '/'+ key + f'_{i} {today_date}.csv', index= False)
+      df_shop.get_shops_price().to_csv(f'{config.folder_path}/{key}_{i} {today_date}.csv', index= False)
 
 
