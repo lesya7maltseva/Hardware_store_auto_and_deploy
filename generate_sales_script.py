@@ -12,10 +12,10 @@ if today_date.weekday() < 6:
   #проверяем наличие папки - создаем если её нет или удаляем всё содержимое, если она есть
   try:
     if os.path.exists(config.folder_path):
-      shutil.rmtree(config.folder_path)
-      os.mkdir(config.folder_path) 
+      shutil.rmtree(os.path.join(dirname,config.folder_path))
+      os.mkdir(os.path.join(dirname,config.folder_path)) 
     else: 
-      os.mkdir(config.folder_path)  
+      os.mkdir(os.path.join(dirname,config.folder_path))  
   except Exception as err:
     print('Ошибка: ', err)
 
