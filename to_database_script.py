@@ -7,7 +7,8 @@ from class_config_reader import ConfigReader
 today_date = date.today()
 config = ConfigReader()
 
-if 0 <= today_date.weekday() <= 6:
+if 0 <= today_date.weekday() < 6:
+
     db_connection = DatabaseConnection(config.base, config.host, config.user, config.password)
 
     query = """select count(id) from shops"""
