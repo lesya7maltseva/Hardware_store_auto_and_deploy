@@ -8,17 +8,23 @@
 
 <h2>Настройка сервера.</h2>
 <br>Для работы проекта на сервере должны быть установлены: python3, venv, pip, postgres Если у вас всё это установлено, пропустите этот раздел.
+
 <br>Если сервер чистый: проверим наличие python3 
 <br><code>python3 --version</code>
+
 <br>для проверки наличия pip воспользуйтесь командой 
 <br><code>pip freeze</code>
+
 <br>далее установим pip командами:
 <br><code>apt update</code>
 <br><code>apt install python3-pip</code>
+
 <br>сразу установим виртуальное окружение командой 
-<br>apt install python3 venv 
+<br><code>apt install python3 venv</code> 
+
 <br>после этого установим postgresql
-<br>apt-get -y install postgresql
+<br><code>apt-get -y install postgresql</code>
+
 <br>Немного о конфигурации проекта.
 <br>В файле config.ini лежат параметры проекта. 
 <br>Раздел Sales_data содержит словарь Shops в нем ключом является порядковый номер магазина, а значением число касс в нем. 
@@ -28,26 +34,26 @@
 <br>Деплой
 <br>На сервере перейдите в папку home (если будете делать в другой папке, нужно будет в crontab поменять название первой папки в том числе - см. в разделе Автоматизация)
 <br>Чтобы загрузить проект на сервер введите команду:
-<br>git clone https://github.com/your_git_profile/Hardware_store_auto_and_deploy.git
+<br><code>git clone https://github.com/your_git_profile/Hardware_store_auto_and_deploy.git</code>
 <br>Затем перейдите в папку проекта Hardware_store_auto_and_deploy
 <br>Для того чтобы не скачивать все библиотеки на сервер воспользуемся виртуальным окружением.
 <br>Создадим папку командой:
-<br>python3 -m venv venv
+<br><code>python3 -m venv venv</code>
 <br>Активируем виртуальное окружение:
-<br>source venv/bin/activate
+<br><code>source venv/bin/activate</code>
 <br>Устанавливаем зависимости
-<br>pip install -r requirements1.0.txt
+<br><code>pip install -r requirements1.0.txt</code>
 <br>Для подключения к базе данных изменим пароль пользователя posgtres
 <br>Сменим пользователя командой:
-<br>su postgres
+<br><code>su postgres</code>
 <br>Подключимся к постгре командой:
-<br>psql -U postgres
+<br><code>psql -U postgres</code>
 <br>Меняем пароль командой:
-<br>ALTER USER postgres WITH PASSWORD 'my35town48'('или ваш пароль');
+<br><code>ALTER USER postgres WITH PASSWORD 'my35town48'('или ваш пароль');</code>
 <br>Выходим командой:
-<br>exit
+<br><code>exit</code>
 <br>Переключимся на пользователя root командой: 
-<br>su
+<br><code>su</code>
 <br>Потребуется повторный ввод пароля сервера
 <br>Создание Базы данных:
 <br>Настройте новое соединение Postgres и создайте базу данных
@@ -58,9 +64,9 @@
 <br>Для автоматизации использован crontab 
 <br>необходимые команды можно найти в папке img файл crontab в git-репозитории проекта.
 <br>Откройте дополнительно подключение к серверу, либо выйдите из виртуального окружения командой 
-<br>deactivate
+<br><code>deactivate</code>
 <br>Для того чтобы открыть crontab потребуется команда:
-<br>EDITOR=nano crontab -e
+<br><code>EDITOR=nano crontab -e</code>
 <br>в открывшемся редакторе повторите команды из скрина crontab 
 <br>Скрипт генерации продаж работает в течении 1 минуты в 7 утра с понедельника по субботу
 <br>Скрипт переноса в базу данных работает в течение 1 минуты в 8 утра каждый день.
